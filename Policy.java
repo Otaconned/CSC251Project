@@ -6,10 +6,10 @@ public class Policy
 {
 
    private int policyNumber; // PH's policy number
-   private int holderAge; // PH's age
    private String policyProvider; // Policy provider
    private String firstname; // PH's first name
    private String lastname; // PH's last name
+   private int holderAge; // PH's age
    private String smokingStatus; // PH's smoking status
    private double height; // PH's height in inches
    private double weight; // PH's weight in pounds
@@ -20,10 +20,10 @@ public class Policy
    public Policy()
    {
       policyNumber = 0;
-      holderAge = 0;
       policyProvider = "";
       firstname = "";
       lastname = "";
+      holderAge = 0;
       smokingStatus = ""; 
       height = 0.0;
       weight = 0.0;
@@ -41,13 +41,13 @@ public class Policy
    @param inch The policyholder's height
    @param lbs The policyholder's weight
 */
-   public Policy(int num, int age, String prov, String fn, String ln, String stat, double inch, double lbs)
+   public Policy(int num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
    {
       policyNumber = num;
-      holderAge = age;
       policyProvider = prov;
       firstname = fn;
       lastname = ln;
+      holderAge = age;
       smokingStatus = stat;
       height = inch;
       weight = lbs;
@@ -63,13 +63,13 @@ public class Policy
    @param inch The policyholder's height
    @param lbs The policyholder's weight
 */   
-   public void set(int num, int age, String prov, String fn, String ln, String stat, double inch, double lbs)
+   public void set(int num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
    {
       policyNumber = num;
-      holderAge = age;
       policyProvider = prov;
       firstname = fn;
       lastname = ln;
+      holderAge = age;
       smokingStatus = stat;
       height = inch;
       weight = lbs;
@@ -82,16 +82,6 @@ public class Policy
    public int getPolicyNumber() 
    {
       return policyNumber;
-   }
-   
-/**
-   getHolderAge method
-   @return The age of the policyholder
-*/    
-
-   public int getHolderAge() 
-   {
-      return holderAge;
    }
 
 /**
@@ -120,6 +110,15 @@ public class Policy
    public String getLastname() 
    {
       return lastname;
+   }
+/**
+   getHolderAge method
+   @return The age of the policyholder
+*/    
+
+   public int getHolderAge() 
+   {
+      return holderAge;
    }
 /**
    getSmokingStatus method
