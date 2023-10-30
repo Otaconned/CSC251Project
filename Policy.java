@@ -5,7 +5,7 @@
 public class Policy
 {
 
-   private int policyNumber; // PH's policy number
+   private String policyNumber; // PH's policy number
    private String policyProvider; // Policy provider
    private String firstname; // PH's first name
    private String lastname; // PH's last name
@@ -19,7 +19,7 @@ public class Policy
 */
    public Policy()
    {
-      policyNumber = 0;
+      policyNumber = "";
       policyProvider = "";
       firstname = "";
       lastname = "";
@@ -41,7 +41,7 @@ public class Policy
    @param inch The policyholder's height
    @param lbs The policyholder's weight
 */
-   public Policy(int num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
+   public Policy(String num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
    {
       policyNumber = num;
       policyProvider = prov;
@@ -63,7 +63,7 @@ public class Policy
    @param inch The policyholder's height
    @param lbs The policyholder's weight
 */   
-   public void set(int num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
+   public void set(String num, String prov, String fn, String ln, int age, String stat, double inch, double lbs)
    {
       policyNumber = num;
       policyProvider = prov;
@@ -79,7 +79,7 @@ public class Policy
    @return The policy number
 */  
 
-   public int getPolicyNumber() 
+   public String getPolicyNumber() 
    {
       return policyNumber;
    }
@@ -162,17 +162,23 @@ public class Policy
 */     
    public double calculatePolicyPrice() 
    {
-      double policyPrice = 600;
-      double bmi = calculateBMI();
+      final double BASE_FEE = 600;
+      final double SMOKING_FEE = 100;
+      final double AGE_FEE = 75;
+      final double BMI_FEE = 20;
+      final int AGE_LIMIT = 50;
+      final int BMI_LIMIT = 35;
       
-      if (holderAge > 50){
-         policyPrice += 75;
+      double policyPrice = BASE_FEE;
+      
+      if (holderAge > AGE_LIMIT){
+         policyPrice += AGE_FEE;
       }
       if (smokingStatus.equalsIgnoreCase("Smoker")){
-         policyPrice += 100;
+         policyPrice += SMOKING_FEE;
       }
-      if (bmi > 35){
-         policyPrice += (bmi - 35)*20;
+      if (calculateBMI() > BMI_LIMIT){
+         policyPrice += (calculateBMI() - BMI_LIMIT)*BMI_FEE;
       }
       
       return policyPrice;
