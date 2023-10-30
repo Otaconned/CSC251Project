@@ -7,6 +7,7 @@ public class Policy
 
    private String policyNumber; // PH's policy number
    private String policyProvider; // Policy provider
+   private PolicyHolder policyHolder; // the Policy Holder
    private static int policyCount = 0;
      
 /**
@@ -30,6 +31,10 @@ public class Policy
       policyNumber = num;
       policyProvider = prov;
    } // end of method
+   public Policy(PolicyHolder holder)
+   {
+      policyHolder = new PolicyHolder(holder);
+   }
 /**
    this method sets a value for each field
    @param num The policy number
@@ -67,6 +72,14 @@ public class Policy
    {
       return policyCount;
    }
+/** 
+   This method returns a copy of the PH class
+   @return A reference to PolicyHolder class
+*/
+   public PolicyHolder getPolicyHolder()
+   {
+      return new PolicyHolder(policyHolder);
+   }
 /**
    calculatePolicyPrice method
    @return The price of the policy based on age, smoking status, and BMI factors
@@ -82,14 +95,14 @@ public class Policy
       
       double policyPrice = BASE_FEE;
       
-      if (holderAge > AGE_LIMIT){
+      if (policyHolder.getHolderAge() > AGE_LIMIT){
          policyPrice += AGE_FEE;
       }
-      if (smokingStatus.equalsIgnoreCase("Smoker")){
+      if (policyHolder.smokingStatus.equalsIgnoreCase("Smoker")){
          policyPrice += SMOKING_FEE;
       }
-      if (calculateBMI() > BMI_LIMIT){
-         policyPrice += (calculateBMI() - BMI_LIMIT)*BMI_FEE;
+      if (policyHolder.calculateBMI() > BMI_LIMIT){
+         policyPrice += (policyHolder.calculateBMI() - BMI_LIMIT)*BMI_FEE;
       }
       
       return policyPrice;
@@ -100,8 +113,8 @@ public class Policy
 */
    public String toString()
    {
-      String str = "Policy Number: "  + num +
-                   "\nProvider Name: " + prov +
+      String str = "Policy Number: "  + policyNumber +
+                   "\nProvider Name: " + policyProvider +
                    "\nPolicy Price: $%,.2f" + calculatePolicyPrice();
       return str;
    }

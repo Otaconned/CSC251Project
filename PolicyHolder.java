@@ -42,6 +42,20 @@ public class PolicyHolder
       weight = lbs;
    } // end of method
 /**
+   this copy constructor 
+   intializes the obkect as a copy of 
+   another policyholder object
+*/
+   public PolicyHolder(PolicyHolder object2)
+   {
+      firstname = object2.firstname;
+      lastname = object2.lastname;
+      holderAge = object2.holderAge;
+      smokingStatus = object2.smokingStatus;
+      height = object2.height;
+      weight = object2.weight;
+   }   
+/**
    this method setsa value for each field
    @param age The age of the policy holder
    @param fn The policyholder's first name
@@ -128,13 +142,13 @@ public class PolicyHolder
 */
    public String toString()
    {
-      String str = "Policyholder’s First Name: "  + fn +
-                   "\nPolicyholder’s Last Name:  " + ln +
-                   "\nPolicyholder’s Age:  " + age +
-                   "\nPolicyholder’s Smoking Status:  " + stat +
-                   "\nPolicyholder’s Height:  " + inch +
-                   "\nPolicyholder’s Weight:  " + lbs +
-                   "\nPolicyholder’s BMI: %.2f" + calculateBMI;
+      String str = "Policyholder’s First Name: "  + firstname +
+                   "\nPolicyholder’s Last Name:  " + lastname +
+                   "\nPolicyholder’s Age:  " + holderAge +
+                   "\nPolicyholder’s Smoking Status:  " + smokingStatus +
+                   "\nPolicyholder’s Height:  " + height +
+                   "\nPolicyholder’s Weight:  " + weight +
+                   "\nPolicyholder’s BMI: %.2f" + calculateBMI();
       return str;
    }
 } // end of class

@@ -17,6 +17,7 @@ public class Project_sam_harrelson
       int smokerCount = 0;
       
       ArrayList<Policy> policies = new ArrayList<Policy>();
+      ArrayList<PolicyHolder> holder = new ArrayList<PolicyHolder>();
 
       File file = new File("PolicyInformation.txt");
       Scanner inputFile = new Scanner(file);
@@ -37,27 +38,20 @@ public class Project_sam_harrelson
          if(inputFile.hasNext())
             inputFile.nextLine();
             
-            policies.add(new Policy(num, prov, fn, ln, age, stat, inch, lbs));
+            policies.add(new Policy(num, prov));
+            holder.add(new PolicyHolder(fn, ln, age, stat, inch, lbs));
        } // end of while
       
       for(Policy policy : policies)
       {
-         System.out.println("\nPolicy Number: " + policy.getPolicyNumber());
-         System.out.println("Provider Name: " + policy.getPolicyProvider());
-         System.out.println("Policyholder’s First Name: "  + policy.getFirstname());
-         System.out.println("Policyholder’s Last Name: " + policy.getLastname());
-         System.out.println("Policyholder’s Age: " + policy.getHolderAge());
-         System.out.println("Policyholder’s Smoking Status: " + policy.getSmokingStatus());
-         System.out.println("Policyholder’s Height: " + policy.getHeight());
-         System.out.println("Policyholder’s Weight: " + policy.getWeight());
-         System.out.printf("Policyholder’s BMI: %.2f", policy.calculateBMI());
-         System.out.printf("\nPolicy Price: $%,.2f", policy.calculatePolicyPrice());
+         System.out.println(policy);
+         System.out.println(holder);
          
-         if(policy.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
+         if(holder.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
             smokerCount++;
       } // end of for
-      
-      System.out.println("The number of policies with a smoker is: " + smokerCount);
+      System.out.println("There were " + policies.getPolicyCount() + " objects created.");
+      System.out.println("\nThe number of policies with a smoker is: " + smokerCount);
       System.out.println("The number of policies with a non-smoker is: " + (policies.size() - smokerCount) );  
    } // end of main
 } // end of class
