@@ -84,4 +84,16 @@ public class Policy
       
       return policyPrice;
    } 
+/**
+   returns a string with details on the policy
+   @return The string detail for policy
+*/
+   public String toString()
+   {
+      String str = "Policy Number: "  + num +
+                   "\nProvider Name: " + prov +
+                   "\nPolicy Price: $%,.2f" + calculatePolicyPrice;
+      return str;
+   }
+
 } // end of class

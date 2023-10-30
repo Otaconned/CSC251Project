@@ -122,4 +122,19 @@ public class PolicyHolder
       final int BMI_CALCULATION = 703;
       return (weight*BMI_CALCULATION)/(height *  height);
    }
+/**
+   returns a string with details on the policy holder
+   @return The string detail for policy holder
+*/
+   public String toString()
+   {
+      String str = "Policyholder’s First Name: "  + fn +
+                   "\nPolicyholder’s Last Name:  " + ln +
+                   "\nPolicyholder’s Age:  " + age +
+                   "\nPolicyholder’s Smoking Status:  " + stat +
+                   "\nPolicyholder’s Height:  " + inch +
+                   "\nPolicyholder’s Weight:  " + lbs +
+                   "\nPolicyholder’s BMI: %.2f" + calculateBMI;
+      return str;
+   }
 } // end of class
