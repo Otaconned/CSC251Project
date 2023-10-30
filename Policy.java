@@ -7,6 +7,7 @@ public class Policy
 
    private String policyNumber; // PH's policy number
    private String policyProvider; // Policy provider
+   private static int policyCount = 0;
      
 /**
    no arg constructor w/default values
@@ -15,6 +16,7 @@ public class Policy
    {
       policyNumber = "";
       policyProvider = "";
+      policyCount++;
    } // end of method
    
 /**
@@ -57,6 +59,14 @@ public class Policy
    {
       return policyProvider;
    }
+/** 
+   This method returns the # of policies created
+   @return The # of policy objects created
+*/
+   public int getPolicyCount()
+   {
+      return policyCount;
+   }
 /**
    calculatePolicyPrice method
    @return The price of the policy based on age, smoking status, and BMI factors
@@ -92,8 +102,7 @@ public class Policy
    {
       String str = "Policy Number: "  + num +
                    "\nProvider Name: " + prov +
-                   "\nPolicy Price: $%,.2f" + calculatePolicyPrice;
+                   "\nPolicy Price: $%,.2f" + calculatePolicyPrice();
       return str;
    }
-
 } // end of class
